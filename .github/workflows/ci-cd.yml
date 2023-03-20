@@ -1,22 +1,21 @@
-name: CI/CD
-
+name: Build and Deploy
 on:
   push:
     branches:
       - master
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install
-      - name: Build project
+      - name: Build
         run: npm run build
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          personal_token: ${{ secrets.SECRET_KEY }}
-          publish_dir: ./build
+          branch: gh-pages
+          folder: build
