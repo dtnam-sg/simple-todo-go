@@ -10,17 +10,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14x]
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Setup Node
         uses: actions/setup-node@v1
-        node-version: ${{ matrix.node-version }}
+        with:
+          node-version: 16
 
       - name: Cache dependencies
         uses: actions/cache@v2
