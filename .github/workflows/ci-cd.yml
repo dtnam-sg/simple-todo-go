@@ -1,24 +1,38 @@
 name: Build and Deploy
 on:
   push:
-    branches:
-      - master
-permissions:
-  contents: read
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  build-and-deploy:
+  build:
+
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.0
-        with:
-          token: ${{ secrets.SECRET_KEY }}
-          branch: gh-pages
-          folder: dist
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build --if-present
+    - name: Deploy
+      run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        git remote set-url origin https://${github_token}@github.com/${repository}
+        npm run gh-pages -d build
+      env:
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        github_token: ${{ secrets.SECRET_KEY }}
+        repository: ${{ github.repository }}
