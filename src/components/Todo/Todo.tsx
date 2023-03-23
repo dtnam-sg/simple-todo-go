@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { ITodo } from "../../model/todo.model";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
@@ -8,12 +8,12 @@ const TODO_KEY = "todos";
 const Todo = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
 
-  const addTodo = (text: string) => {
-    const newTodo: ITodo = { id: Date.now(), text, completed: false };
+  const addTodo = useCallback((text: string) => {
+    const newTodo: ITodo = { id: Date.now().toString(), text, completed: false };
     setTodos((preTodos) => [...preTodos, newTodo]);
-  };
+  },[todos]);
 
-  const handleToggleTodo = (id: number) => {
+  const handleToggleTodo = (id: string) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, completed: !todo.completed };
@@ -24,10 +24,9 @@ const Todo = () => {
     setTodos(updatedTodos);
   };
 
-  const handleDeleteTodo = (id: number) => {
-    const filteredTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(filteredTodos);
-  };
+  const handleDeleteTodo = useCallback((id: string) => {
+    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+},[todos]);
 
   return (
     <div className="container mx-auto mt-8 max-w-xl">

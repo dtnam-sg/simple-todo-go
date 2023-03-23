@@ -1,5 +1,5 @@
 export interface ITodo {
-    id: number;
+    id: string;
     text: string;
     completed: boolean;
 }
@@ -10,14 +10,14 @@ export interface ITodoFormProps {
 
 export interface ITodoListProps{
     todos: ITodo[];
-    onToggleTodo: (id: number) => void
-    onDeleteTodo: (id: number) => void
+    onToggleTodo: (id: string) => void
+    onDeleteTodo: (id: string) => void
 }
 
 export interface ITodoItemProps {
     todo: ITodo;
-    onToggleTodo: (id: number) => void
-    onDeleteTodo: (id: number) => void
+    onToggleTodo: (id: string) => void
+    onDeleteTodo: (id: string) => void
 }
 
 
