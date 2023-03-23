@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { ITodo } from "../../model/todo.model";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
@@ -7,6 +7,16 @@ const TODO_KEY = "todos";
 
 const Todo = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
+
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem(TODO_KEY) || '[]');
+    setTodos(storedTodos);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(TODO_KEY, JSON.stringify(todos));
+  }, [todos]);
+
 
   const addTodo = useCallback((text: string) => {
     const newTodo: ITodo = { id: Date.now().toString(), text, completed: false };
