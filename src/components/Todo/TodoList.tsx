@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, onDeleteTodo, onToggleTodo }: ITodoListProps) => {
   if (todos.length === 0) {
-    return <div className='text-center'>No todos.</div>;
+    return <div className='text-center text-stone-900'>No todos.</div>;
   }
   return (
     <ul className="mt-4">

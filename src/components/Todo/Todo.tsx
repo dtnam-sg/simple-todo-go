@@ -39,7 +39,7 @@ const Todo = () => {
 },[todos]);
 
   return (
-    <div className="container mx-auto mt-8 max-w-xl bg-green-200 p-5 rounded-xl text-center ">
+    <div className="container shadow-inner shadow-2xl mx-auto mt-8 max-w-xl bg-gradient-to-r from-cyan-300 bg-green-300 bg-green-200 p-5 rounded-xl text-center ">
       <h1 className="text-3xl font-bold mb-4 text-green-600 ">Todo List</h1>
       <TodoForm addTodo={addTodo} />
       <TodoList
