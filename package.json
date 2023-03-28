@@ -11,6 +11,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.16",
     "autoprefix": "^1.0.1",
     "gh-pages": "^5.0.0",
     "postcss": "^8.4.21",

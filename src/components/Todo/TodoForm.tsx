@@ -16,16 +16,16 @@ const TodoForm = ({ addTodo }: ITodoFormProps) => {
   };
 
   return (
-    <div className="flex mb-4">
+    <div className="flex mb-4 justify-center">
       <form onSubmit={handleSubmit}>
         <input
           type='text'
           value={text}
           onChange={handleChangeValue}
           placeholder='Add new todo'
-          className="flex-1 mr-2 py-2 px-3 border border-gray-400 rounded"
+          className="flex-1 mr-2 py-2 px-3 border border-slate-200 rounded-md hover:shadow focus:outline-none"
         />
-        <button type='submit'>Add</button>
+        <button type='submit' className="bg-green-300 text-green-900 hover:border-green-800">Add</button>
       </form>
     </div>
   );
