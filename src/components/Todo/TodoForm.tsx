@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ITodoFormProps } from "../../model/todo.model";
+import Button from "../Button/Button";
 
 const TodoForm = ({ addTodo }: ITodoFormProps) => {
   const [text, setText] = useState("");
@@ -25,7 +26,7 @@ const TodoForm = ({ addTodo }: ITodoFormProps) => {
           placeholder='Add new todo'
           className="flex-1 mr-2 py-2 px-3 border border-slate-200 rounded-md hover:shadow focus:outline-none"
         />
-        <button type='submit' className="bg-green-300 text-green-900 hover:border-green-800">Add</button>
+        <Button type="submit">Add</Button>
       </form>
     </div>
   );
