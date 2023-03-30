@@ -19,7 +19,7 @@ const Todo = () => {
       };
       setTodos((preTodos) => [...preTodos, newTodo]);
     },
-    [],
+    [todos],
   );
 
   const handleToggleTodo = (id: string) => {
@@ -37,7 +37,7 @@ const Todo = () => {
     (id: string) => {
       setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
     },
-    [],
+    [todos],
   );
 
   return (
