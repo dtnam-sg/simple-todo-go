@@ -41,7 +41,7 @@ const Todo = () => {
   );
 
   return (
-    <div className='font-sans text-xl container shadow-inner shadow-2xl mx-auto mt-8 max-w-xl bg-white p-5 rounded-xl text-center '>
+    <div className='font-sans text-xl container shadow-2xl mx-auto mt-8 max-w-xl bg-white p-5 rounded-xl text-center '>
       <h1 className='text-3xl font-bold mb-4 text-green-600 '>Todo List</h1>
       <TodoForm addTodo={addTodo} />
       <TodoList

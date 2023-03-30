@@ -25,8 +25,8 @@ const TodoItem = ({ todo, onToggleTodo, onDeleteTodo }: ITodoItemProps) => {
         }`}>
         {todo.text}
       </span>
-      <button className='text-red-500 p-2 hover:border-red-400 border-red-700 ' onClick={handleDeleteTodo}>
-        <TrashIcon className="h-5 w-5 text-red-500 hover:text-red-600" />
+      <button className='text-red-500 p-2 hover:border-red-400 border-red-700 hover:shadow-xl' onClick={handleDeleteTodo}>
+        <TrashIcon className="h-6 w-6 text-red-500 hover:text-red-600 border-red-700 " />
       </button>
     </li>
   );
