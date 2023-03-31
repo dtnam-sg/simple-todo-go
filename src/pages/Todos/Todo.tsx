@@ -63,12 +63,12 @@ const Todo = () => {
         {totalPages > 1 &&
           Array.from({ length: totalPages }, (_, index) => (
             <Button
-              variant='primary'
+              variant=''
               key={index}
               className={`mx-1 ${
                 currentPage === index + 1
-                  ? "text-white"
-                  : "bg-white text-slate-800 border hover:bg-blue-500 hover:text-white text-gray-700"
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent border hover:bg-blue-500 hover:text-white text-slate-700"
               }`}
               onClick={() => handlePageChange(index + 1)}>
               {index + 1}
