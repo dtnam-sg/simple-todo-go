@@ -3,6 +3,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import { ITodo } from "../../model/todo.model";
 import TodoForm from "../../components/Todo/TodoForm";
 import TodoList from "../../components/Todo/TodoList";
+import Button from "../../components/Button/Button";
 
 const TODO_KEY = "todos";
 const PAGE_SIZE = 5;
@@ -61,16 +62,17 @@ const Todo = () => {
       <div className='flex justify-center mt-6'>
         {totalPages > 1 &&
           Array.from({ length: totalPages }, (_, index) => (
-            <button
+            <Button
+              variant='primary'
               key={index}
-              className={`p-2 mx-2 ${
+              className={`mx-1 ${
                 currentPage === index + 1
-                  ? "bg-blue-500 text-white"
-                  : "bg-white border border-gray-300 hover:bg-blue-500 hover:text-white text-gray-700"
+                  ? "text-white"
+                  : "bg-white text-slate-800 border hover:bg-blue-500 hover:text-white text-gray-700"
               }`}
               onClick={() => handlePageChange(index + 1)}>
               {index + 1}
-            </button>
+            </Button>
           ))}
       </div>
     </div>

@@ -24,7 +24,7 @@ const TodoForm = ({ addTodo }: ITodoFormProps) => {
           value={text}
           onChange={handleChangeValue}
           placeholder='Add new todo'
-          className="flex-1 mr-2 py-2 px-3 border border-slate-200 rounded-md hover:shadow focus:outline-none"
+          className="flex-1 mr-2 py-2 h-10 px-4 border border-slate-200 rounded-lg hover:shadow focus:outline-none"
         />
         <Button type="submit">Add</Button>
       </form>

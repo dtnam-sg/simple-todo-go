@@ -1,6 +1,8 @@
 import React from "react";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
+import Button from "../Button/Button";
+
 import { ITodoItemProps } from "../../model/todo.model";
 
 const TodoItem = ({ todo, onToggleTodo, onDeleteTodo }: ITodoItemProps) => {
@@ -12,7 +14,7 @@ const TodoItem = ({ todo, onToggleTodo, onDeleteTodo }: ITodoItemProps) => {
   };
 
   return (
-    <li className='group flex items-center mb-2 '>
+    <li className='group flex items-center mb-2 hover:shadow-blue-500/50 hover:shadow-lg px-2 rounded-lg hover:cursor-pointer '>
       <div onClick={handleToggleTodo} className='mr-2'>
         {!todo.completed ? (
           <svg
@@ -50,11 +52,9 @@ const TodoItem = ({ todo, onToggleTodo, onDeleteTodo }: ITodoItemProps) => {
         }`}>
         {todo.text}
       </span>
-      <button
-        className='text-red-500 p-2 hover:border-red-400 opacity-0 group-hover:opacity-100 '
-        onClick={handleDeleteTodo}>
-        <TrashIcon className='h-8 w-8 text-red-500 hover:text-red-600 border-red-700 ' />
-      </button>
+      <Button onClick={handleDeleteTodo} variant="" className="bg-transparent opacity-0 group-hover:opacity-100">
+        <TrashIcon className='h-8 w-8 text-red-500  border-red-700 ' />
+      </Button>
     </li>
   );
 };
