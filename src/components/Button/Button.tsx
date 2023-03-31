@@ -35,7 +35,7 @@ const Button: FC<ButtonProps> = ({
       variantClasses = "text-white bg-red-500 hover:bg-red-600";
       break;
     default:
-      variantClasses = "text-white";
+      variantClasses = "";
   }
 
   switch (size) {
