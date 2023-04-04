@@ -1,16 +1,27 @@
 import React from "react";
-import { TrashIcon } from "@heroicons/react/24/solid";
+import { TrashIcon, HeartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid";
 
 import Button from "../Button/Button";
 
 import { ITodoItemProps } from "../../model/todo.model";
 
-const TodoItem = ({ todo, onToggleTodo, onDeleteTodo }: ITodoItemProps) => {
+const TodoItem = ({
+  todo,
+  onToggleTodo,
+  onDeleteTodo,
+  onLikeTodo,
+}: ITodoItemProps) => {
   const handleToggleTodo = () => {
     onToggleTodo(todo.id);
   };
+
   const handleDeleteTodo = () => {
     onDeleteTodo(todo.id);
+  };
+
+  const handleLikeTodo = () => {
+    onLikeTodo(todo.id);
   };
 
   return (
@@ -52,7 +63,21 @@ const TodoItem = ({ todo, onToggleTodo, onDeleteTodo }: ITodoItemProps) => {
         }`}>
         {todo.text}
       </span>
-      <Button onClick={handleDeleteTodo} variant="" className="bg-transparent opacity-0 group-hover:opacity-100">
+      {todo.like ? (
+        <HeartIconSolid
+          onClick={handleLikeTodo}
+          className='h-6 text-red-700 hover:text-red-600 hover:border-slate-500'
+        />
+      ) : (
+         <HeartIcon
+          onClick={handleLikeTodo}
+          className={`h-6 border-red-700 hover:text-red-700`}
+        />
+      )}
+      <Button
+        onClick={handleDeleteTodo}
+        variant=''
+        className='bg-transparent opacity-0 group-hover:opacity-100'>
         <TrashIcon className='h-8 w-8 text-red-500  border-red-700 ' />
       </Button>
     </li>

@@ -18,6 +18,7 @@ const Todo = () => {
         id: Date.now().toString(),
         text,
         completed: false,
+        like: false,
       };
       setTodos((preTodos) => [...preTodos, newTodo]);
     },
@@ -42,6 +43,17 @@ const Todo = () => {
     [todos],
   );
 
+  const handleToggleLikeTodo = (id: string) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, like: !todo.like };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(updatedTodos);
+  };
+
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
@@ -58,6 +70,7 @@ const Todo = () => {
         todos={todos.slice(startIndex, endIndex)}
         onToggleTodo={handleToggleTodo}
         onDeleteTodo={handleDeleteTodo}
+        onLikeTodo={handleToggleLikeTodo}
       />
       <div className='flex justify-center mt-6'>
         {totalPages > 1 &&
