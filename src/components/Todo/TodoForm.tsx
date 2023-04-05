@@ -26,7 +26,9 @@ const TodoForm = ({ addTodo }: ITodoFormProps) => {
           placeholder='Add new todo'
           className='flex-1 mr-2 py-2 h-10 px-4 border border-slate-200 rounded-lg hover:shadow focus:outline-none'
         />
-        <Button type='submit'>Add</Button>
+        <Button className='hover:shadow-md' type='submit'>
+          Add
+        </Button>
       </form>
     </div>
   );
